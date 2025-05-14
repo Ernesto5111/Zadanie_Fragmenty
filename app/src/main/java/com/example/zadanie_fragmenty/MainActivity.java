@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity { // Dziedziczy po AppCompat
 
         Button button_a = findViewById(R.id.button1);
         Button button_b = findViewById(R.id.button2);
+        Button back = findViewById(R.id.button3);
         button_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +31,16 @@ public class MainActivity extends AppCompatActivity { // Dziedziczy po AppCompat
             public void onClick(View v) {
                 loadSimpleFragment(new SimpleInfoFragment2());
                 cos=2;
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cos==1){
+                    loadSimpleFragment(new SimpleInfoFragment2());
+                }else{
+                    loadSimpleFragment(new SimpleInfoFragment1());
+                }
             }
         });
         // Możesz załadować fragment od razu przy starcie, jeśli chcesz
@@ -60,15 +71,7 @@ public class MainActivity extends AppCompatActivity { // Dziedziczy po AppCompat
         //    Istnieje też metoda add(), która dodaje fragment bez usuwania poprzednich w tym kontenerze.
         //    Replace jest często używane do nawigacji między "ekranami" fragmentów.
         fragmentTransaction.replace(R.id.fragment_container_dynamic, simpleFragment);
-
-        // 5. (Opcjonalnie) Dodaj transakcję do stosu Wstecz (Back Stack)
-        //    Jeśli to zrobisz, użytkownik będzie mógł wrócić do poprzedniego stanu
-        //    (np. pustego kontenera lub poprzedniego fragmentu) używając przycisku Wstecz.
-        //    Jeśli nie dodasz do back stack, naciśnięcie Wstecz może zamknąć Aktywność.
-        //    Przekazanie 'null' oznacza brak specjalnej nazwy dla tej transakcji na stosie.
-        // fragmentTransaction.addToBackStack(null); // Odkomentuj, jeśli chcesz umożliwić cofanie
-
-        // 6. Zatwierdź Transakcję
+        // 5. Zatwierdź Transakcję
         //    Dopiero teraz zmiany zostaną zaplanowane do wykonania.
         fragmentTransaction.commit();
     }
