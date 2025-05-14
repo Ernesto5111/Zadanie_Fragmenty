@@ -21,6 +21,13 @@
         android:text="Fragment B"
         android:id="@+id/button2"
         />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="Cofnij"
+        android:id="@+id/button3"
+        />
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_dynamic"
         android:layout_width="match_parent"
